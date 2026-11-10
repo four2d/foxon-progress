@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FOXON — where the apps are</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0b0b0b;
+    --yellow: #f2c500;
+    --white: #fff;
+    --ink: #f4f1e8;
+    --muted: #a39e92;
+    --line: #2a2a2a;
+    --card: #141414;
+    --danger: #ff4d3a;
+    --off: #222;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; background: var(--black); color: var(--ink); }
+  section[id], article[id], h2[id] { scroll-margin-top: 72px; }
+  ::selection { background: var(--yellow); color: var(--black); }
+  body {
+    font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .mark, .num, .n, .tag, .stage, .pill, .kicker, .stat b, .rail span, .who, .points b, .jump a, .job, .plat, .band h3, .legend, .chk th, .meter-label, .gaplabel {
+    font-family: Oswald, Impact, Haettenschweiler, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .hazard {
+    height: 14px;
+    background: repeating-linear-gradient(-45deg, var(--yellow) 0 12px, var(--black) 12px 24px);
+    border-bottom: 3px solid var(--black);
+  }
+  header, main, footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  header { padding: 36px 0 8px; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: end; }
+  .brand img { height: 64px; width: auto; display: block; }
+  .asof { justify-self: end; text-align: right; color: var(--muted); font-size: 13px; max-width: 320px; margin: 0; }
+  h1 { font-size: clamp(40px, 6vw, 72px); line-height: 0.92; margin: 28px 0 12px; color: var(--white); letter-spacing: 0.02em; }
+  .lede { max-width: 680px; font-size: 20px; margin: 0 0 28px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 42px; }
+  .stat { background: var(--card); border-top: 4px solid var(--yellow); padding: 16px 16px 14px; }
+  .stat.alert { border-top-color: var(--danger); }
+  .stat b { display: block; font-size: 34px; color: var(--yellow); line-height: 1; }
+  .stat.alert b { color: var(--danger); }
+  .stat span { color: var(--muted); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+  section { margin: 0 0 48px; }
+  h2 { font-size: 28px; margin: 0 0 8px; color: var(--white); }
+  .note { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+  .chart { background: var(--card); padding: 22px 18px 8px; overflow-x: auto; }
+  .chart svg { width: 100%; height: auto; min-width: 720px; display: block; }
+  .apps { display: grid; gap: 18px; }
+  article.app {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    background: var(--card);
+    min-height: 220px;
+  }
+  .illu {
+    background: var(--black);
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 12px;
+    border-right: 1px solid var(--line);
+    padding: 18px;
+  }
+  .illu svg { width: 108px; height: 108px; }
+  .illu .pct { font-family: Oswald, Impact, sans-serif; font-size: 30px; font-weight: 600; letter-spacing: 0.02em; color: var(--yellow); line-height: 1; }
+  .body { padding: 18px 20px 16px; min-width: 0; }
+  .body h3 { margin: 0; font-size: 28px; color: var(--white); }
+  .job { margin: 2px 0 14px; color: var(--yellow); letter-spacing: 0.14em; font-size: 13px; }
+  .meter { margin: 0 0 16px; }
+  .meter-label { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .meter-label b { color: var(--white); }
+  .bar { height: 10px; background: var(--off); overflow: hidden; display: flex; }
+  .bar i { display: block; height: 100%; }
+  .bar i.done { background: var(--yellow); }
+  .bar i.part { background: repeating-linear-gradient(-45deg, var(--yellow) 0 3px, transparent 3px 6px); }
+  .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .track { border-top: 1px solid var(--line); padding-top: 10px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .plat { font-size: 18px; color: var(--white); }
+  .ver { color: var(--muted); font-size: 14px; }
+  .pill {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    background: var(--yellow);
+    color: var(--black);
+  }
+  .pill.wait { background: transparent; color: var(--yellow); box-shadow: inset 0 0 0 1.5px var(--yellow); }
+  .pill.stop { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1.5px #3a3a3a; }
+  .pill.alert { background: var(--danger); color: var(--white); }
+  .rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+  .rail span {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-top: 4px solid #333;
+    padding-top: 6px;
+  }
+  .rail span.on { color: var(--white); border-color: var(--yellow); }
+  .rail span.mid { color: var(--yellow); border-color: var(--yellow); border-top-style: dashed; }
+  .jump {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 12px 0;
+    background: var(--black);
+  }
+  .jump a {
+    color: var(--yellow);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 6px 10px;
+    box-shadow: inset 0 0 0 1.5px var(--yellow);
+  }
+  .jump a:hover, .jump a:focus-visible {
+    background: var(--yellow);
+    color: var(--black);
+    outline: none;
+  }
+  .call {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #1c1c1c;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .tl { margin-top: 16px; display: grid; gap: 16px; }
+  .lane { display: grid; grid-template-columns: 92px 1fr; gap: 8px; align-items: start; }
+  .who { font-size: 14px; color: var(--white); padding-top: 0; }
+  .points {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0 0 2px;
+    position: relative;
+    overflow-x: auto;
+    scrollbar-color: var(--yellow) var(--card);
+  }
+  .points::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 18px;
+    height: 2px;
+    background: var(--line);
+  }
+  .points:has(li:only-child)::before { display: none; }
+  .points li { flex: 1 0 112px; min-width: 112px; position: relative; }
+  .points i {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 0 0 8px;
+    background: #3a3a3a;
+    position: relative;
+    z-index: 1;
+  }
+  .points li.past i, .points li.now i { background: var(--yellow); }
+  .points li.now i { outline: 2px solid var(--yellow); outline-offset: 3px; }
+  .points li.wait i { background: transparent; outline: 2px solid var(--yellow); }
+  .points b { display: block; font-size: 16px; color: var(--white); line-height: 1.1; }
+  .points li.wait b { color: var(--yellow); }
+  .points span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+  .split { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; align-items: start; }
+  .split > div { min-width: 0; }
+  .ahead { background: var(--card); padding: 8px 18px 16px; }
+  .ahead li { margin: 12px 0; padding-left: 0; }
+  .ahead ul { margin: 0; padding: 0; list-style: none; }
+  .ahead strong { color: var(--white); }
+  .path { margin-top: 8px; }
+  .step {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 8px 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step .n { font-size: 28px; line-height: 1; color: var(--yellow); }
+  .step.wait .n, .step.open .n { color: var(--muted); }
+  .step h3 { margin: 0 0 4px; font-size: 22px; color: var(--white); }
+  .step p { margin: 0; max-width: 68ch; }
+  .tag {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    background: var(--yellow);
+    padding: 2px 8px;
+  }
+  .step.wait .tag, .step.open .tag, .tag.wait { color: var(--yellow); background: transparent; box-shadow: inset 0 0 0 1.5px var(--yellow); }
+  .tag.alert { background: var(--danger); color: var(--white); box-shadow: none; }
+  .bands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .band { background: #1c1c1c; padding: 12px 14px 6px; }
+  .band h3 { margin: 0 0 8px; font-size: 16px; color: var(--yellow); display: flex; justify-content: space-between; gap: 8px; }
+  .band h3 small { color: var(--muted); font-size: 12px; }
+  .band ol { margin: 0 0 8px; padding-left: 1.15em; }
+  .band li { margin: 0 0 10px; }
+  .band li span { display: block; color: var(--muted); font-size: 14px; }
+  .band li em { font-style: normal; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yellow); margin-left: 6px; }
+  .band li strong { color: var(--white); font-weight: 600; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12px; color: var(--muted); margin: 0 0 14px; align-items: center; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink); background: transparent; border: 0; box-shadow: inset 0 0 0 1.5px var(--line); padding: 5px 10px; cursor: pointer; }
+  .legend button:hover { background: #1c1c1c; }
+  .chk-wrap { background: var(--card); overflow-x: auto; margin-bottom: 18px; }
+  table.chk { width: 100%; border-collapse: collapse; min-width: 520px; }
+  .chk th, .chk td { text-align: left; padding: 10px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  .chk thead th { border-top: 0; font-size: 12px; color: var(--muted); padding-top: 14px; }
+  .chk th.grp { font-size: 13px; color: var(--white); background: #1c1c1c; }
+  .chk td.label { color: var(--ink); width: 40%; }
+  .box { display: inline-grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; border: 0; padding: 0; background: transparent; box-shadow: inset 0 0 0 1.5px #3a3a3a; color: var(--black); cursor: pointer; vertical-align: middle; }
+  .box svg { width: 14px; height: 14px; }
+  .box.done { background: var(--yellow); box-shadow: none; cursor: default; color: var(--black); }
+  .box.part { box-shadow: inset 0 0 0 1.5px var(--yellow); background: linear-gradient(135deg, var(--yellow) 0 50%, transparent 50%); }
+  .box.local { background: transparent; box-shadow: none; outline: 1.5px dashed var(--ink); outline-offset: -1.5px; color: var(--ink); }
+  .box.na { cursor: default; box-shadow: none; color: var(--muted); }
+  .box:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+  .cellwrap { display: flex; gap: 10px; align-items: flex-start; padding-top: 2px; }
+  .cellnote { font-size: 13px; line-height: 1.4; color: var(--muted); padding-top: 1px; }
+  .cellnote .lt { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+  footer { color: var(--muted); font-size: 13px; padding: 8px 0 40px; }
+  @media (max-width: 800px) {
+    header { grid-template-columns: 1fr; }
+    .asof { justify-self: start; text-align: left; }
+    .stats, .tracks, .split, article.app, .lane, .bands, .step { grid-template-columns: 1fr; }
+    .illu { border-right: 0; border-bottom: 1px solid var(--line); grid-auto-flow: column; justify-content: start; gap: 18px; padding: 14px 18px; }
+    .illu svg { width: 56px; height: 56px; }
+    .points { flex-direction: column; gap: 14px; overflow: visible; }
+    .points::before { top: 8px; bottom: 28px; left: 5px; right: auto; width: 2px; height: auto; }
+    .points li { min-width: 0; flex: none; }
+    .points i { position: absolute; left: 0; top: 2px; }
+    .points b, .points span { padding-left: 22px; }
+    .chk-wrap { overflow: visible; }
+    table.chk, .chk tbody, .chk tr, .chk td, .chk th.grp { display: block; min-width: 0; width: auto; }
+    .chk thead { display: none; }
+    .chk tr { border-top: 1px solid var(--line); padding: 10px 14px 6px; }
+    .chk th.grp { border-top: 0; padding: 10px 14px; }
+    .chk tr:has(th.grp) { padding: 0; }
+    .chk td { border-top: 0; padding: 0 0 6px; }
+    .chk td.label { width: auto; color: var(--white); padding-bottom: 8px; }
+    .chk td.cell { width: auto; display: grid; grid-template-columns: 90px 1fr; align-items: start; }
+    .chk td.cell::before { content: attr(data-plat); font-family: Oswald, Impact, sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 5px; }
+    .chk td.cell.na { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="hazard" aria-hidden="true"></div>
+<header>
+  <div class="brand">
+    <img src="foxon-logo-horizontal-dark.svg" alt="FOXON software">
+  </div>
+  <p class="asof">Prepared 10 Nov 2026, Europe/London. Phones last confirmed 7 Nov for Invoice, CIS and Gas, and 4 Nov for Miles. Play facts from 9 Nov: Invoice Android in review, Gas Android on Internal testing.</p>
+</header>
+<main>
+  <p class="kicker" style="color:var(--yellow);margin:22px 0 0">Invoice Android is in Play review · nothing is live on a public store</p>
+  <h1>Where the apps actually are.</h1>
+  <p class="lede">Four trade apps on iPhone and Android, plus Books on the Mac. Nothing is live on a public store. <strong>Foxon Invoice for Android</strong> went into Play review on 9 Nov as Production 7 (1.0), UK only. The order of work is Invoice, then CIS, then Gas, then Miles. UK only. One public submit at a time.</p>
+  <nav class="jump" aria-label="On this page">
+    <a href="#progress">Progress</a>
+    <a href="#stages">Stages</a>
+    <a href="#gap">Phone gap</a>
+    <a href="#left">Left to do</a>
+    <a href="#next">Next</a>
+    <a href="#blockers">Blockers</a>
+    <a href="#features">Checklist</a>
+  </nav>
+  <div class="call">Invoice Android 1.0 (7) is in review on Google Play (UK only, full rollout). Data safety and trader status were included in that package. Gas Android 1.1 (9) is completed on Play Internal testing, but the test phones are still on a debug build from 7 Nov. CIS and Miles stay on their test tracks. A public listing for the other three apps still waits for Pete. Miles still needs a background-location video filmed on a real phone.</div>
+
+  <div class="stats">
+    <div class="stat"><b data-pct-app="Invoice">—</b><span>Invoice checklist done</span></div>
+    <div class="stat"><b data-pct-app="CIS">—</b><span>CIS checklist done</span></div>
+    <div class="stat"><b>1.0 (7)</b><span>Invoice Android in Play review</span></div>
+    <div class="stat alert"><b>0</b><span>Public store releases</span></div>
+  </div>
+
+  <section id="progress">
+    <h2>Progress</h2>
+    <p class="note">Each percentage is worked out from the checklist at the bottom of this page. A finished item counts in full. A built or drafted item counts as half. Local ticks do not count.</p>
+    <div class="apps" id="apps"></div>
+  </section>
+
+  <section id="stages">
+    <h2>The same four steps</h2>
+    <p class="note">Yellow means that step is done. A dashed yellow bar means the store page is prepared and not sent, except Invoice Android, where the store-page step is filled because the 9 Nov production review was sent. Grey means not started. Public is still grey on every app.</p>
+    <div class="chart">
+      <svg viewBox="0 0 980 420" role="img" aria-label="Stage chart for each app and platform">
+        <g font-family="Oswald, Impact, sans-serif" font-size="15" fill="#a39e92">
+          <text x="168" y="28">Built</text>
+          <text x="330" y="28">On a device</text>
+          <text x="520" y="28">Store page</text>
+          <text x="740" y="28">Public</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <h2 id="gap">On the phone, not the same build</h2>
+      <p class="note">Miles is one gap: Android shows streets, the iPhone still shows the on-device outline. Gas is the other: Play Internal has Android 1.1 (9), but both test phones are on a debug build.</p>
+      <div class="chart" style="padding:18px">
+        <svg viewBox="0 0 640 220" role="img" aria-label="Miles map and Gas build gaps between the phones and the latest test tracks">
+          <rect x="0" y="20" width="280" height="16" fill="#f2c500"/>
+          <rect x="0" y="70" width="168" height="16" fill="#f2c500"/>
+          <text x="0" y="14" fill="#fff" font-family="Oswald, Impact, sans-serif" font-size="16">ANDROID · STREET MAP · 1.0 (12)</text>
+          <text x="0" y="64" fill="#fff" font-family="Oswald, Impact, sans-serif" font-size="16">IPHONE · OUTLINE ONLY · 1.0 (9)</text>
+          <text x="0" y="120" fill="#a39e92" font-family="Avenir Next, Helvetica, sans-serif" font-size="15">The street-map work for iPhone is drafted. It is not on TestFlight.</text>
+          <text x="0" y="148" fill="#a39e92" font-family="Avenir Next, Helvetica, sans-serif" font-size="15">Gas Android 1.1 (9) is on Play Internal. The phones still run a 7 Nov debug build.</text>
+        </svg>
+      </div>
+    </div>
+    <div class="ahead">
+      <h2 id="ahead">Written, not on the phone</h2>
+      <ul>
+        <li><strong>Gas.</strong> Play Internal has Android 1.1 (9). The test phones are on a debug build. Team sharing for a later public release is not in that Internal build.</li>
+        <li><strong>Miles, iPhone.</strong> Place names on trips already filed, and the shared street map, are drafted only.</li>
+        <li><strong>Books.</strong> The friend download on the website is still 1.3.1. The 1.3.13 update is staged and not published. The Mac app is 1.3.15.</li>
+        <li><strong>Website.</strong> The Android privacy section and the canonical-URL fix went live on 9 Nov.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="left">
+    <h2>What’s left to do</h2>
+    <p class="note">Every checklist item that is not finished yet, in checklist order. This list comes from <code>features.json</code>, so it moves when an item is ticked there.</p>
+    <div class="bands" id="leftBands"></div>
+  </section>
+
+  <section id="next">
+    <h2>What’s next</h2>
+    <p class="note">In this order. Nothing else is submitted, published or sent to a public store without Pete saying so in chat.</p>
+    <div class="path">
+      <div class="step">
+        <div><span class="tag">Play</span><div class="n">01</div></div>
+        <div>
+          <h3>Wait for Invoice Android review</h3>
+          <p>Production 7 (1.0), UK only, went to review on 9 Nov. Play shows “Changes in review”. This is not a public listing yet.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div><span class="tag alert">Pete</span><div class="n">02</div></div>
+        <div>
+          <h3>Film the Miles location video</h3>
+          <p>A background-location video, shot on a real phone, is still needed before Miles can go to Play review.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div><span class="tag alert">Pete</span><div class="n">03</div></div>
+        <div>
+          <h3>Say when to submit the other apps</h3>
+          <p>After Invoice, the order is CIS, then Gas, then Miles. UK only. Do not send the next app while the last one is in review.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div><span class="tag wait">Phones</span><div class="n">04</div></div>
+        <div>
+          <h3>Line up Gas and Miles on the test phones</h3>
+          <p>Gas phones still run a debug build, not Play Internal 1.1 (9). The Miles iPhone build still lacks the street map that is already on Android.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div><span class="tag alert">Pete</span><div class="n">05</div></div>
+        <div>
+          <h3>Publish the Books friend download</h3>
+          <p>1.3.13 is staged. The live file is still 1.3.1. The Mac app is 1.3.15. There is no Windows installer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blockers">
+    <h2>Blockers</h2>
+    <p class="note">What is stuck, and who it waits on.</p>
+    <div class="path">
+      <div class="step"><div><span class="tag">Play</span></div><div><h3>Invoice Android is in review</h3><p>Until Play finishes, Invoice is not public. The other three apps wait their turn.</p></div></div>
+      <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>Miles background-location video</h3><p>It has to be filmed on a real phone before a Play submit.</p></div></div>
+      <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>OK to submit CIS, Gas and Miles</h3><p>Listings are written. Nothing goes to review until Pete says so in chat.</p></div></div>
+      <div class="step"><div><span class="tag wait">Phones</span></div><div><h3>Gas test phones are on a debug build</h3><p>Play Internal 1.1 (9) is ready for testers. The phones were last confirmed on a 7 Nov debug build.</p></div></div>
+      <div class="step"><div><span class="tag wait">Phones</span></div><div><h3>Miles iPhone map is behind Android</h3><p>The street map is drafted and is not on TestFlight. The phone still shows the outline.</p></div></div>
+      <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>Books friend download</h3><p>1.3.13 stays staged until Pete says to publish it.</p></div></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Feature checklist</h2>
+    <p class="note">This list comes from <code>features.json</code> in this folder. A bot ticks an item by editing that file and pushing. Click an empty box to add a local tick. It is saved only in this browser, it is not saved to the file, and it does not change the percentages.</p>
+    <div class="legend" id="legend">
+      <span><i class="box done" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2"/></svg></i>Done</span>
+      <span><i class="box part" aria-hidden="true"></i>Built or drafted</span>
+      <span><i class="box" aria-hidden="true"></i>Not done</span>
+      <span><i class="box local" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2"/></svg></i>Local tick, not yet saved</span>
+      <button type="button" id="clearLocal" hidden>Clear local ticks</button>
+    </div>
+    <div id="chkRoot"></div>
+  </section>
+</main>
+<footer>
+  FOXON Software · Tools That Graft · Prepared 10 Nov 2026, Europe/London. Nothing is live on a public store. Invoice Android 1.0 (7) is in Play review, UK only.
+</footer>
+<script>
+const tick = `<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+const Y = "#f2c500", OFF = "#222";
+
+const apps = [
+  {
+    name: "Invoice", job: "Quote. Invoice. Get paid.",
+    draw: `<svg viewBox="0 0 120 120"><rect x="28" y="16" width="64" height="88" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M40 36h40M40 50h40M40 64h26" stroke="#f2c500" stroke-width="4"/><path d="M46 84l8 8 18-20" fill="none" stroke="#f2c500" stroke-width="4"/></svg>`,
+    tracks: [
+      { plat: "iPhone", ver: "TestFlight 1.1 (8)", pill: "Internal test", cls: "", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
+      { plat: "Android", ver: "Play review 1.0 (7)", pill: "In review", cls: "alert", steps: ["on","on","on","off"], labels: ["Built","On the Pixel","In review","Public"] }
+    ],
+    lanes: [
+      { who: "iPhone", points: [
+        { v: "1.1 (5)", when: "27 Oct · was on TestFlight", state: "past" },
+        { v: "1.1 (8)", when: "4 Nov · on the phone", state: "now" }
+      ]},
+      { who: "Android", points: [
+        { v: "code 2", when: "27 Oct · Play internal", state: "past" },
+        { v: "1.0 (6)", when: "4 Nov · was on the Pixel", state: "past" },
+        { v: "1.0 (7)", when: "7 Nov on the Pixel · 9 Nov in Play review, UK only", state: "now" }
+      ]}
+    ],
+    call: "TestFlight also still holds Invoice 1.1 builds 6 and 7. The iPhone App Store version is prepared and has not been sent. The first public release does not mention Making Tax Digital."
+  },
+  {
+    name: "CIS", job: "Every payment. Every deduction.",
+    draw: `<svg viewBox="0 0 120 120"><rect x="22" y="24" width="76" height="72" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M22 44h76M40 44v52" stroke="#f2c500" stroke-width="4"/><path d="M52 62h34M52 78h22" stroke="#f2c500" stroke-width="4"/></svg>`,
+    tracks: [
+      { plat: "iPhone", ver: "TestFlight 1.1 (10)", pill: "On the phone", cls: "", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
+      { plat: "Android", ver: "Play internal 1.1 (7)", pill: "On the Pixel", cls: "", steps: ["on","on","off","off"], labels: ["Built","On the Pixel","Not sent","Public"] }
+    ],
+    lanes: [
+      { who: "iPhone", points: [
+        { v: "1.1 (9)", when: "4 Nov · was on the phone", state: "past" },
+        { v: "1.1 (10)", when: "7 Nov · on the phone", state: "now" }
+      ]},
+      { who: "Android", points: [
+        { v: "code 2", when: "27 Oct · Play internal", state: "past" },
+        { v: "1.1 (6)", when: "4 Nov · was on the Pixel", state: "past" },
+        { v: "1.1 (7)", when: "7 Nov · on the Pixel", state: "now" }
+      ]}
+    ],
+    call: "The App Store version is prepared as 1.1 and has not been sent to review. A reply to an earlier App Store review is drafted and has not been sent. Invoice goes first."
+  },
+  {
+    name: "Miles", job: "Every business mile, counted.",
+    draw: `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M60 28 v10 M60 82 v10 M28 60 h10 M82 60 h10" stroke="#f2c500" stroke-width="4"/><path d="M38 74 L60 42 L82 66" fill="none" stroke="#f2c500" stroke-width="4"/></svg>`,
+    tracks: [
+      { plat: "iPhone", ver: "TestFlight 1.0 (9)", pill: "Outline", cls: "wait", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
+      { plat: "Android", ver: "Play internal 1.0 (12)", pill: "Street map", cls: "", steps: ["on","on","off","off"], labels: ["Built","On the Pixel","Not sent","Public"] }
+    ],
+    lanes: [
+      { who: "iPhone", points: [
+        { v: "1.0 (6)", when: "31 Oct · TestFlight", state: "past" },
+        { v: "1.0 (9)", when: "4 Nov · on the phone", state: "now" }
+      ]},
+      { who: "Android", points: [
+        { v: "code 3", when: "27 Oct · Play internal", state: "past" },
+        { v: "1.0 (12)", when: "4 Nov · on the Pixel", state: "now" }
+      ]}
+    ],
+    call: "Android is ahead on the map. The iPhone build on TestFlight does not yet show the same streets. A real-phone background-location video is still needed for Play."
+  },
+  {
+    name: "Gas", job: "CP12. Signed. Sent.",
+    draw: `<svg viewBox="0 0 120 120"><path d="M60 18c8 16 22 28 22 46a22 22 0 0 1-44 0c0-18 14-30 22-46z" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M60 58c4 6 10 10 10 16a10 10 0 0 1-20 0c0-6 6-10 10-16z" fill="#f2c500"/></svg>`,
+    tracks: [
+      { plat: "iPhone", ver: "Debug 1.1 on the phone", pill: "Not the store build", cls: "wait", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
+      { plat: "Android", ver: "Play Internal 1.1 (9)", pill: "Internal, not on the Pixel", cls: "wait", steps: ["on","on","off","off"], labels: ["Built","On Internal","Not sent","Public"] }
+    ],
+    lanes: [
+      { who: "iPhone", points: [
+        { v: "1.1 (3)", when: "27 Oct · TestFlight", state: "past" },
+        { v: "1.1 (5)", when: "31 Oct · TestFlight", state: "past" },
+        { v: "1.1 (6)", when: "4 Nov · was the TestFlight build", state: "past" },
+        { v: "Debug 1.1", when: "7 Nov · on the phone", state: "now" }
+      ]},
+      { who: "Android", points: [
+        { v: "code 3", when: "27 Oct · Play internal", state: "past" },
+        { v: "1.1 (4)", when: "28 Oct · Play internal", state: "past" },
+        { v: "1.1 (8)", when: "4 Nov · was the Play build", state: "past" },
+        { v: "Debug 1.1 (8)", when: "7 Nov · on the Pixel", state: "now" },
+        { v: "1.1 (9)", when: "9 Nov · Play Internal, not on the Pixel", state: "wait" }
+      ]}
+    ],
+    call: "Records and certificates. Not a Gas Safe approval, and this page does not claim one. Play Internal 1.1 (9) is completed. The test phones are still on a 7 Nov debug build. Team sharing for a later public release is not in the 1.1 (9) build."
+  },
+  {
+    name: "Books", job: "The company ledger.",
+    draw: `<svg viewBox="0 0 120 120"><rect x="18" y="28" width="84" height="56" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M18 46h84M40 46v38" stroke="#f2c500" stroke-width="4"/></svg>`,
+    tracks: [
+      { plat: "Mac", ver: "1.3.15", pill: "In use", cls: "", steps: ["on","on","mid","off"], labels: ["Built","On the Mac","Friend file","On the site"] },
+      { plat: "Windows", ver: "No installer", pill: "Not started", cls: "stop", steps: ["off","off","off","off"], labels: ["Built","A PC","Installer","On the site"] }
+    ],
+    lanes: [
+      { who: "Mac", points: [
+        { v: "1.3.15", when: "5 Nov · on the Mac", state: "now" }
+      ]},
+      { who: "Website", points: [
+        { v: "1.3.1", when: "Friend download · on the site", state: "now" },
+        { v: "1.3.13", when: "Staged · waiting to publish", state: "wait" }
+      ]},
+      { who: "Windows", points: [
+        { v: "None", when: "No installer", state: "stop" }
+      ]}
+    ],
+    call: "Friends still download 1.3.1 from the website. The newer 1.3.13 file is staged and has not been published. The Mac app is already 1.3.15."
+  }
+];
+
+const stageRows = [
+  ["Invoice · iPhone", ["full","full","half","none"]],
+  ["Invoice · Android", ["full","full","full","none"]],
+  ["CIS · iPhone", ["full","full","half","none"]],
+  ["CIS · Android", ["full","full","none","none"]],
+  ["Miles · iPhone", ["full","full","half","none"]],
+  ["Miles · Android", ["full","full","none","none"]],
+  ["Gas · iPhone", ["full","full","half","none"]],
+  ["Gas · Android", ["full","full","none","none"]],
+  ["Books · Mac", ["full","full","half","none"]],
+  ["Books · Windows", ["none","none","none","none"]]
+];
+
+function pctOf(data, pid) {
+  let n = 0, got = 0, done = 0, part = 0, todo = 0;
+  data.groups.forEach(g => g.items.forEach(it => {
+    const c = it[pid]; if (!c || c.state === "na") return;
+    n++; if (c.state === "done") { got += 1; done++; } else if (c.state === "part") { got += 0.5; part++; } else todo++;
+  }));
+  return { pct: n ? Math.round(got / n * 100) : 0, n, done, part, todo };
+}
+
+function pctOfApp(data, appName) {
+  const ids = data.platforms.filter(p => p.app === appName).map(p => p.id);
+  let n = 0, got = 0, done = 0, part = 0, todo = 0;
+  data.groups.forEach(g => g.items.forEach(it => {
+    ids.forEach(pid => {
+      const c = it[pid]; if (!c || c.state === "na") return;
+      n++; if (c.state === "done") { got += 1; done++; } else if (c.state === "part") { got += 0.5; part++; } else todo++;
+    });
+  }));
+  return { pct: n ? Math.round(got / n * 100) : 0, n, done, part, todo };
+}
+
+const LKEY = "foxon-progress-local-ticks";
+const local = (() => { try { return JSON.parse(localStorage.getItem(LKEY) || "{}"); } catch (e) { return {}; } })();
+const saveLocal = () => { try { localStorage.setItem(LKEY, JSON.stringify(local)); } catch (e) {} };
+
+function drawApps(data) {
+  document.getElementById("apps").innerHTML = apps.map(a => {
+    const p = data ? pctOfApp(data, a.name) : null;
+    const meter = p ? `<div class="meter"><div class="meter-label"><span><b>${p.done}</b> done · <b>${p.part}</b> built or drafted · <b>${p.todo}</b> to do</span><span>${p.n} items</span></div>
+      <div class="bar" role="img" aria-label="${p.pct}% done"><i class="done" style="width:${p.n ? p.done / p.n * 100 : 0}%"></i><i class="part" style="width:${p.n ? p.part / p.n * 100 : 0}%"></i></div></div>` : "";
+    return `
+  <article class="app" id="${a.name.toLowerCase()}">
+    <div class="illu">${a.draw}${p ? `<div class="pct">${p.pct}%</div>` : ""}</div>
+    <div class="body">
+      <h3>${a.name}</h3>
+      <p class="job">${a.job}</p>
+      ${meter}
+      <div class="tracks">
+        ${a.tracks.map(t => `
+          <div class="track">
+            <div class="row"><span class="plat">${t.plat}</span><span class="pill ${t.cls}">${t.pill}</span></div>
+            <div class="ver">${t.ver}</div>
+            <div class="rail">${t.labels.map((lb,i) => `<span class="${t.steps[i]==="on"?"on":t.steps[i]==="mid"?"mid":""}">${lb}</span>`).join("")}</div>
+          </div>`).join("")}
+      </div>
+      ${a.lanes ? `<div class="tl">${a.lanes.map(l => `
+        <div class="lane">
+          <div class="who">${l.who}</div>
+          <ol class="points">${l.points.map(pt => `<li class="${pt.state}"><i aria-hidden="true"></i><b>${pt.v}</b><span>${pt.when}</span></li>`).join("")}</ol>
+        </div>`).join("")}</div>` : ""}
+      ${a.call ? `<div class="call">${a.call}</div>` : ""}
+    </div>
+  </article>`;
+  }).join("");
+}
+
+function drawStages() {
+  const svg = document.querySelector("#stages svg");
+  const ns = "http://www.w3.org/2000/svg";
+  stageRows.forEach((row, i) => {
+    const y = 52 + i * 36;
+    const label = document.createElementNS(ns, "text");
+    label.setAttribute("x", "8");
+    label.setAttribute("y", y + 14);
+    label.setAttribute("fill", "#fff");
+    label.setAttribute("font-family", "Oswald, Impact, sans-serif");
+    label.setAttribute("font-size", "15");
+    label.textContent = row[0].toUpperCase();
+    svg.appendChild(label);
+    row[1].forEach((state, s) => {
+      const x = 168 + s * 190;
+      const rect = document.createElementNS(ns, "rect");
+      rect.setAttribute("x", x);
+      rect.setAttribute("y", y);
+      rect.setAttribute("width", "150");
+      rect.setAttribute("height", "18");
+      rect.setAttribute("fill", state === "full" ? Y : state === "half" ? "none" : OFF);
+      if (state === "half") {
+        rect.setAttribute("stroke", Y);
+        rect.setAttribute("stroke-width", "3");
+      }
+      svg.appendChild(rect);
+      if (state === "half") {
+        const half = document.createElementNS(ns, "rect");
+        half.setAttribute("x", x);
+        half.setAttribute("y", y);
+        half.setAttribute("width", "75");
+        half.setAttribute("height", "18");
+        half.setAttribute("fill", Y);
+        svg.appendChild(half);
+      }
+    });
+  });
+}
+
+function drawLeft(data) {
+  document.getElementById("leftBands").innerHTML = data.groups.map(g => {
+    const items = [];
+    g.items.forEach(it => {
+      data.platforms.forEach(pl => {
+        const c = it[pl.id];
+        if (!c || c.state === "done" || c.state === "na") return;
+        items.push(`<li>${it.label} <strong>${pl.name.replace(g.name + " ", "")}</strong>${c.state === "part" ? "<em>Half done</em>" : ""}${c.note ? `<span>${c.note}</span>` : ""}</li>`);
+      });
+    });
+    return `<div class="band"><h3>${g.name} <small>${items.length} left</small></h3><ol>${items.join("") || "<li>Nothing left in this group.</li>"}</ol></div>`;
+  }).join("");
+}
+
+function platformsFor(g, all) {
+  const ids = new Set();
+  g.items.forEach(it => all.forEach(p => { if (it[p.id] && it[p.id].state !== "na") ids.add(p.id); }));
+  return all.filter(p => ids.has(p.id));
+}
+
+function drawChecklist(data) {
+  const root = document.getElementById("chkRoot");
+  root.innerHTML = data.groups.map(g => {
+    const pls = platformsFor(g, data.platforms);
+    const head = `<thead><tr><th>Item</th>${pls.map(p => `<th>${p.name.replace(g.name + " ", "")}</th>`).join("")}</tr></thead>`;
+    const body = `<tbody><tr><th class="grp" colspan="${pls.length + 1}">${g.name}</th></tr>${g.items.map(it => `<tr><td class="label">${it.label}</td>${pls.map(p => {
+      const c = it[p.id];
+      if (!c || c.state === "na") return `<td class="cell na" data-plat="${p.name}"><div class="cellwrap"><span class="box na" aria-label="Does not apply">–</span></div></td>`;
+      const key = it.id + ":" + p.id;
+      if (c.state === "done") return `<td class="cell" data-plat="${p.name}"><div class="cellwrap"><span class="box done" role="img" aria-label="Done">${tick}</span><span class="cellnote">${c.note || ""}</span></div></td>`;
+      const isLocal = !!local[key];
+      const cls = isLocal ? "local" : c.state === "part" ? "part" : "";
+      const lbl = isLocal ? "Local tick, not yet saved. Click to remove." : (c.state === "part" ? "Built or drafted. Click to add a local tick." : "Not done. Click to add a local tick.");
+      return `<td class="cell" data-plat="${p.name}"><div class="cellwrap"><button type="button" class="box ${cls}" data-key="${key}" aria-pressed="${isLocal}" aria-label="${lbl}" title="${lbl}">${isLocal ? tick : ""}</button><span class="cellnote">${isLocal ? `<span class="lt">Local tick, not yet saved</span>` : ""}${c.note || ""}</span></div></td>`;
+    }).join("")}</tr>`).join("")}</tbody>`;
+    return `<div class="chk-wrap"><table class="chk">${head}${body}</table></div>`;
+  }).join("");
+  root.querySelectorAll("button.box").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.key; if (local[k]) delete local[k]; else local[k] = true; saveLocal(); drawChecklist(data);
+  }));
+  const clear = document.getElementById("clearLocal");
+  clear.hidden = Object.keys(local).length === 0;
+  clear.onclick = () => { Object.keys(local).forEach(k => delete local[k]); saveLocal(); drawChecklist(data); };
+}
+
+drawStages();
+drawApps(null);
+fetch("features.json", { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(data => {
+    document.querySelectorAll("[data-pct-app]").forEach(el => { el.textContent = pctOfApp(data, el.dataset.pctApp).pct + "%"; });
+    drawApps(data); drawLeft(data); drawChecklist(data);
+  })
+  .catch(() => {
+    const msg = `<div class="call">The checklist file did not load. Open this page over http (for example GitHub Pages), not as a local file.</div>`;
+    document.getElementById("leftBands").outerHTML = msg;
+    document.getElementById("chkRoot").outerHTML = msg;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+{
+  "updated": "10 Nov 2026",
+  "platforms": [
+    {
+      "id": "invoice-ios",
+      "name": "Invoice iPhone",
+      "app": "Invoice"
+    },
+    {
+      "id": "invoice-android",
+      "name": "Invoice Android",
+      "app": "Invoice"
+    },
+    {
+      "id": "cis-ios",
+      "name": "CIS iPhone",
+      "app": "CIS"
+    },
+    {
+      "id": "cis-android",
+      "name": "CIS Android",
+      "app": "CIS"
+    },
+    {
+      "id": "miles-ios",
+      "name": "Miles iPhone",
+      "app": "Miles"
+    },
+    {
+      "id": "miles-android",
+      "name": "Miles Android",
+      "app": "Miles"
+    },
+    {
+      "id": "gas-ios",
+      "name": "Gas iPhone",
+      "app": "Gas"
+    },
+    {
+      "id": "gas-android",
+      "name": "Gas Android",
+      "app": "Gas"
+    },
+    {
+      "id": "books-mac",
+      "name": "Books Mac",
+      "app": "Books"
+    },
+    {
+      "id": "books-win",
+      "name": "Books Windows",
+      "app": "Books"
+    },
+    {
+      "id": "books-site",
+      "name": "Books website",
+      "app": "Books"
+    },
+    {
+      "id": "web",
+      "name": "Website",
+      "app": "Website"
+    }
+  ],
+  "states": {
+    "done": "Done and checked",
+    "part": "Built or drafted, not yet checked or finished",
+    "todo": "Not done",
+    "na": "Does not apply"
+  },
+  "groups": [
+    {
+      "name": "Invoice",
+      "items": [
+        {
+          "id": "invoice-test-build",
+          "label": "Test build on a phone (TestFlight or Play internal)",
+          "invoice-ios": {
+            "state": "done",
+            "note": "TestFlight 1.1 (8). Last confirmed on the iPhone 4 Nov."
+          },
+          "invoice-android": {
+            "state": "done",
+            "note": "1.0 (7) on the Pixel 7 Nov. The same version is now in Play review."
+          }
+        },
+        {
+          "id": "invoice-listing",
+          "label": "Store listing",
+          "invoice-ios": {
+            "state": "part",
+            "note": "Prepared. Not sent to App Review."
+          },
+          "invoice-android": {
+            "state": "part",
+            "note": "Production 7 (1.0), UK only, went to Play review on 9 Nov. The store listing and subscriptions may still need a follow-up."
+          }
+        },
+        {
+          "id": "invoice-data-safety",
+          "label": "Privacy and Data safety answers",
+          "invoice-ios": {
+            "state": "part",
+            "note": "Prepared with the App Store version. Not sent."
+          },
+          "invoice-android": {
+            "state": "done",
+            "note": "Data safety was included in the 9 Nov Play review package."
+          }
+        },
+        {
+          "id": "invoice-trader",
+          "label": "Trader declaration",
+          "invoice-android": {
+            "state": "done",
+            "note": "Included in the 9 Nov Play review package, with a link to the terms on foxonsoftware.com."
+          }
+        },
+        {
+          "id": "invoice-getting-started",
+          "label": "Getting started signed off",
+          "invoice-ios": {
+            "state": "todo"
+          },
+          "invoice-android": {
+            "state": "todo"
+          }
+        },
+        {
+          "id": "invoice-submit",
+          "label": "Sent for review",
+          "invoice-ios": {
+            "state": "todo",
+            "note": "The App Store version is prepared and not sent. The first public release does not mention Making Tax Digital."
+          },
+          "invoice-android": {
+            "state": "done",
+            "note": "Play shows Changes in review, 9 Nov. Production 7 (1.0), UK only, full rollout."
+          }
+        },
+        {
+          "id": "invoice-public",
+          "label": "Public on the store",
+          "invoice-ios": {
+            "state": "todo"
+          },
+          "invoice-android": {
+            "state": "todo",
+            "note": "In review, not live."
+          }
+        }
+      ]
+    },
+    {
+      "name": "CIS",
+      "items": [
+        {
+          "id": "cis-test-build",
+          "label": "Test build on a phone (TestFlight or Play internal)",
+          "cis-ios": {
+            "state": "done",
+            "note": "TestFlight 1.1 (10). Last confirmed on the iPhone 7 Nov."
+          },
+          "cis-android": {
+            "state": "done",
+            "note": "Play internal 1.1 (7) on the Pixel 7 Nov."
+          }
+        },
+        {
+          "id": "cis-listing",
+          "label": "Store listing",
+          "cis-ios": {
+            "state": "part",
+            "note": "Prepared as 1.1. Not sent. Invoice goes to review first."
+          },
+          "cis-android": {
+            "state": "part",
+            "note": "Written. Not sent."
+          }
+        },
+        {
+          "id": "cis-data-safety",
+          "label": "Privacy and Data safety answers",
+          "cis-ios": {
+            "state": "part"
+          },
+          "cis-android": {
+            "state": "part",
+            "note": "Drafted. Not submitted on Play."
+          }
+        },
+        {
+          "id": "cis-review-reply",
+          "label": "Reply to an earlier App Store review, if needed",
+          "cis-ios": {
+            "state": "part",
+            "note": "A reply is drafted and has not been sent."
+          }
+        },
+        {
+          "id": "cis-submit",
+          "label": "Sent for review",
+          "cis-ios": {
+            "state": "todo"
+          },
+          "cis-android": {
+            "state": "todo"
+          }
+        },
+        {
+          "id": "cis-public",
+          "label": "Public on the store",
+          "cis-ios": {
+            "state": "todo"
+          },
+          "cis-android": {
+            "state": "todo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Miles",
+      "items": [
+        {
+          "id": "miles-test-build",
+          "label": "Test build on a phone (TestFlight or Play internal)",
+          "miles-ios": {
+            "state": "done",
+            "note": "TestFlight 1.0 (9). Last confirmed on the iPhone 4 Nov. Outline map only."
+          },
+          "miles-android": {
+            "state": "done",
+            "note": "Play internal 1.0 (12) on the Pixel 4 Nov, with the street map."
+          }
+        },
+        {
+          "id": "miles-street-map",
+          "label": "Street map on the phone",
+          "miles-ios": {
+            "state": "part",
+            "note": "Drafted. Not on TestFlight. The phone still shows the on-device outline."
+          },
+          "miles-android": {
+            "state": "done",
+            "note": "On the Pixel in 1.0 (12)."
+          }
+        },
+        {
+          "id": "miles-location-video",
+          "label": "Background-location video for Play, filmed on a real phone",
+          "miles-android": {
+            "state": "todo",
+            "note": "Still needed before a Play submit."
+          }
+        },
+        {
+          "id": "miles-listing",
+          "label": "Store listing",
+          "miles-ios": {
+            "state": "part",
+            "note": "Prepared. Not sent."
+          },
+          "miles-android": {
+            "state": "part",
+            "note": "Written. Not sent."
+          }
+        },
+        {
+          "id": "miles-submit",
+          "label": "Sent for review",
+          "miles-ios": {
+            "state": "todo"
+          },
+          "miles-android": {
+            "state": "todo"
+          }
+        },
+        {
+          "id": "miles-public",
+          "label": "Public on the store",
+          "miles-ios": {
+            "state": "todo"
+          },
+          "miles-android": {
+            "state": "todo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gas",
+      "items": [
+        {
+          "id": "gas-test-build",
+          "label": "Current build on the test phones",
+          "gas-ios": {
+            "state": "part",
+            "note": "A debug 1.1 build has been on the iPhone since 7 Nov, not the TestFlight 1.1 (6) track."
+          },
+          "gas-android": {
+            "state": "part",
+            "note": "A debug 1.1 (8) build has been on the Pixel since 7 Nov, not Play Internal 1.1 (9)."
+          }
+        },
+        {
+          "id": "gas-store-track",
+          "label": "Build on TestFlight or Play Internal",
+          "gas-ios": {
+            "state": "part",
+            "note": "TestFlight 1.1 (6) is on the store track. The phone is running a later debug build."
+          },
+          "gas-android": {
+            "state": "done",
+            "note": "Play Internal 1.1 (9) completed 9 Nov. The Pixel is not on that build yet."
+          }
+        },
+        {
+          "id": "gas-listing",
+          "label": "Store listing",
+          "gas-ios": {
+            "state": "part",
+            "note": "Prepared. Not sent."
+          },
+          "gas-android": {
+            "state": "part",
+            "note": "Written. Not sent."
+          }
+        },
+        {
+          "id": "gas-data-safety",
+          "label": "Privacy and Data safety answers",
+          "gas-ios": {
+            "state": "part"
+          },
+          "gas-android": {
+            "state": "part",
+            "note": "Answers are decided. The Play form may still need completing."
+          }
+        },
+        {
+          "id": "gas-team",
+          "label": "Team sharing for the first public release",
+          "gas-ios": {
+            "state": "todo",
+            "note": "Planned. Not in the current test or Internal builds."
+          },
+          "gas-android": {
+            "state": "todo",
+            "note": "Planned. Not in Play Internal 1.1 (9)."
+          }
+        },
+        {
+          "id": "gas-submit",
+          "label": "Sent for review",
+          "gas-ios": {
+            "state": "todo"
+          },
+          "gas-android": {
+            "state": "todo"
+          }
+        },
+        {
+          "id": "gas-public",
+          "label": "Public on the store",
+          "gas-ios": {
+            "state": "todo"
+          },
+          "gas-android": {
+            "state": "todo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "items": [
+        {
+          "id": "books-mac",
+          "label": "Mac app in use",
+          "books-mac": {
+            "state": "done",
+            "note": "1.3.15, last confirmed 5 Nov."
+          }
+        },
+        {
+          "id": "books-windows",
+          "label": "Windows installer",
+          "books-win": {
+            "state": "todo",
+            "note": "Not started. There is no installer."
+          }
+        },
+        {
+          "id": "books-friend",
+          "label": "Friend download on the website",
+          "books-site": {
+            "state": "part",
+            "note": "The live file is 1.3.1. 1.3.13 is staged and has not been published."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Website",
+      "items": [
+        {
+          "id": "web-live",
+          "label": "Marketing site live, with a privacy page",
+          "web": {
+            "state": "done",
+            "note": "The Android privacy section and the canonical-URL fix went live 9 Nov."
+          }
+        },
+        {
+          "id": "web-books-update",
+          "label": "Friend download updated to 1.3.13",
+          "web": {
+            "state": "todo",
+            "note": "Staged. Not published."
+          }
+        }
+      ]
+    }
+  ]
+}
