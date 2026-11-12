@@ -271,7 +271,7 @@
   <div class="brand">
     <img src="foxon-logo-horizontal-dark.svg" alt="FOXON software">
   </div>
-  <p class="asof">Updated 12 Nov 2026, Europe/London. Phones last confirmed 7 Nov for Invoice, CIS and Gas, and 4 Nov for Miles. Invoice Android went live on Play on 12 Nov; Gas Android is on Internal testing.</p>
+  <p class="asof">Updated 12 Nov 2026, Europe/London. Phones last confirmed 7 Nov for Invoice, CIS and Gas, and 4 Nov for Miles. Play tracks re-read 12 Nov: Invoice Android is live; Gas Internal 1.1 (9); CIS Internal 1.1 (7); Miles Internal 1.0 (13).</p>
 </header>
 <main>
   <p class="kicker" style="color:var(--yellow);margin:22px 0 0">Invoice Android is live on Google Play (UK) · the first FOXON app to go public</p>
@@ -286,7 +286,7 @@
     <a href="#blockers">Blockers</a>
     <a href="#features">Checklist</a>
   </nav>
-  <div class="call">Invoice Android 1.0 is live on Google Play (UK only). Gas Android 1.1 (9) is completed on Play Internal testing, but the test phones are still on a debug build from 7 Nov. CIS and Miles stay on their test tracks. A public listing for the other three apps still waits for Pete. Miles still needs a background-location video filmed on a real phone.</div>
+  <div class="call">Invoice Android 1.0 is live on Google Play (UK only). Gas Android 1.1 (9) and CIS Android 1.1 (7) are completed on Play Internal testing (Gas phones are still on a 7 Nov debug build). Miles Android Internal 1.0 (13) is completed; the Pixel was last confirmed on 1.0 (12). Miles also has a Production 1.0 draft that has not been sent. A public listing for the other three apps still waits for Pete. Miles still needs a background-location video filmed on a real phone.</div>
 
   <div class="stats">
     <div class="stat"><b data-pct-app="Invoice">—</b><span>Invoice checklist done</span></div>
@@ -377,7 +377,7 @@
         <div><span class="tag wait">Phones</span><div class="n">04</div></div>
         <div>
           <h3>Line up Gas and Miles on the test phones</h3>
-          <p>Gas phones still run a debug build, not Play Internal 1.1 (9). The Miles iPhone build still lacks the street map that is already on Android.</p>
+          <p>Gas phones still run a debug build, not Play Internal 1.1 (9). Miles Android Internal is 1.0 (13); the Pixel was last confirmed on 1.0 (12). The Miles iPhone build still lacks the street map that is already on Android.</p>
         </div>
       </div>
       <div class="step">
@@ -469,7 +469,7 @@ const apps = [
     draw: `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M60 28 v10 M60 82 v10 M28 60 h10 M82 60 h10" stroke="#f2c500" stroke-width="4"/><path d="M38 74 L60 42 L82 66" fill="none" stroke="#f2c500" stroke-width="4"/></svg>`,
     tracks: [
       { plat: "iPhone", ver: "TestFlight 1.0 (9)", pill: "Outline", cls: "wait", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
-      { plat: "Android", ver: "Play internal 1.0 (12)", pill: "Street map", cls: "", steps: ["on","on","off","off"], labels: ["Built","On the Pixel","Not sent","Public"] }
+      { plat: "Android", ver: "Play Internal 1.0 (13)", pill: "Internal, not on the Pixel", cls: "wait", steps: ["on","on","off","off"], labels: ["Built","On Internal","Not sent","Public"] }
     ],
     lanes: [
       { who: "iPhone", points: [
@@ -478,10 +478,11 @@ const apps = [
       ]},
       { who: "Android", points: [
         { v: "code 3", when: "27 Oct · Play internal", state: "past" },
-        { v: "1.0 (12)", when: "4 Nov · on the Pixel", state: "now" }
+        { v: "1.0 (12)", when: "4 Nov · on the Pixel", state: "now" },
+        { v: "1.0 (13)", when: "12 Nov · Play Internal, not on the Pixel", state: "wait" }
       ]}
     ],
-    call: "Android is ahead on the map. The iPhone build on TestFlight does not yet show the same streets. A real-phone background-location video is still needed for Play."
+    call: "Android is ahead on the map. Play Internal 1.0 (13) is completed; the Pixel was last confirmed on 1.0 (12). Production 1.0 (version code 7) is a Play draft and has not been sent. The iPhone build on TestFlight does not yet show the same streets. A real-phone background-location video is still needed for Play."
   },
   {
     name: "Gas", job: "CP12. Signed. Sent.",

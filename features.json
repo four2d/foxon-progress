@@ -163,7 +163,7 @@
           },
           "cis-android": {
             "state": "done",
-            "note": "Play internal 1.1 (7) on the Pixel 7 Nov."
+            "note": "Play Internal 1.1 (7) completed (confirmed 12 Nov). Last confirmed on the Pixel 7 Nov. No production release."
           }
         },
         {
@@ -231,7 +231,7 @@
           },
           "miles-android": {
             "state": "done",
-            "note": "Play internal 1.0 (12) on the Pixel 4 Nov, with the street map."
+            "note": "Play Internal 1.0 (13) completed (confirmed 12 Nov). Pixel last confirmed 1.0 (12) on 4 Nov, with the street map."
           }
         },
         {
@@ -263,7 +263,7 @@
           },
           "miles-android": {
             "state": "part",
-            "note": "Written. Not sent."
+            "note": "Written. Not sent. Production 1.0 (version code 7) is a Play draft (confirmed 12 Nov)."
           }
         },
         {
@@ -312,7 +312,7 @@
           },
           "gas-android": {
             "state": "done",
-            "note": "Play Internal 1.1 (9) completed 9 Nov. The Pixel is not on that build yet."
+            "note": "Play Internal 1.1 (9) completed (confirmed 12 Nov). No production release. The Pixel is not on that build yet."
           }
         },
         {
