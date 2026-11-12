@@ -1,5 +1,5 @@
 {
-  "updated": "10 Nov 2026",
+  "updated": "12 Nov 2026",
   "platforms": [
     {
       "id": "invoice-ios",
@@ -81,7 +81,7 @@
           },
           "invoice-android": {
             "state": "done",
-            "note": "1.0 (7) on the Pixel 7 Nov. The same version is now in Play review."
+            "note": "1.0 on the Pixel 7 Nov. The same version is now live."
           }
         },
         {
@@ -92,8 +92,8 @@
             "note": "Prepared. Not sent to App Review."
           },
           "invoice-android": {
-            "state": "part",
-            "note": "Production 7 (1.0), UK only, went to Play review on 9 Nov. The store listing and subscriptions may still need a follow-up."
+            "state": "done",
+            "note": "Live on Google Play, UK only."
           }
         },
         {
@@ -135,7 +135,7 @@
           },
           "invoice-android": {
             "state": "done",
-            "note": "Play shows Changes in review, 9 Nov. Production 7 (1.0), UK only, full rollout."
+            "note": "Approved by Play on 12 Nov. UK only."
           }
         },
         {
@@ -145,8 +145,8 @@
             "state": "todo"
           },
           "invoice-android": {
-            "state": "todo",
-            "note": "In review, not live."
+            "state": "done",
+            "note": "Live on Google Play, UK only, 12 Nov."
           }
         }
       ]
