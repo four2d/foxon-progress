@@ -271,12 +271,12 @@
   <div class="brand">
     <img src="foxon-logo-horizontal-dark.svg" alt="FOXON software">
   </div>
-  <p class="asof">Updated 16 Nov 2026, Europe/London. Gas iPhone 1.1 (7) is on TestFlight (internal testers only). CIS Android changes are in Play review. Phones last confirmed 7 Nov for Invoice, CIS and Gas, and 4 Nov for Miles. Play tracks re-read 12 Nov: Invoice Android is live; Gas Android 1.1.3 (12) on Play Internal (1.1.1 (10) was sent to Production on 12 Nov); CIS Internal 1.1 (7); Miles Internal 1.0 (13).</p>
+  <p class="asof">Updated 16 Nov 2026, Europe/London. Invoice Android 1.0 and Gas Android 1.1.2 (11) are live on Google Play, UK only. Gas Android Play Internal is 1.1.3 (12), on the Pixel. Gas iPhone 1.1 (7) is on TestFlight (internal testers only). CIS Android changes are in Play review; Internal is 1.1 (7). Miles Android Internal is 1.0 (13). Phones last confirmed 7 Nov for Invoice and CIS, 16 Nov for Gas Android, and 4 Nov for Miles.</p>
 </header>
 <main>
-  <p class="kicker" style="color:var(--yellow);margin:22px 0 0">Invoice Android is live on Google Play (UK) · the first FOXON app to go public</p>
+  <p class="kicker" style="color:var(--yellow);margin:22px 0 0">Invoice and Gas Android are live on Google Play (UK) · Invoice was the first FOXON app to go public</p>
   <h1>Where the apps actually are.</h1>
-  <p class="lede">Four trade apps on iPhone and Android, plus Books on the Mac. <strong>Foxon Invoice for Android</strong> was approved and went live on Google Play in the UK on 12 Nov, the first FOXON app to go public. The order of work is Invoice, then CIS, then Gas, then Miles. UK only. One public submit at a time.</p>
+  <p class="lede">Four trade apps on iPhone and Android, plus Books on the Mac. <strong>Foxon Invoice for Android</strong> was approved and went live on Google Play in the UK on 12 Nov, the first FOXON app to go public. <strong>Foxon Gas for Android</strong> is also live on Google Play in the UK. The remaining order of work is CIS, then Miles. UK only. One public submit at a time.</p>
   <nav class="jump" aria-label="On this page">
     <a href="#progress">Progress</a>
     <a href="#stages">Stages</a>
@@ -286,13 +286,13 @@
     <a href="#blockers">Blockers</a>
     <a href="#features">Checklist</a>
   </nav>
-  <div class="call">Invoice Android 1.0 is live on Google Play (UK only). CIS Android 1.1 (7) is completed on Play Internal testing. Gas Android 1.1.1 (10) was sent to Play Production on 12 Nov and is not yet confirmed live (Gas phones are still on a 7 Nov debug build). Miles Android Internal 1.0 (13) is completed; the Pixel was last confirmed on 1.0 (12). Miles also has a Production 1.0 draft that has not been sent. A public listing for the other three apps still waits for Pete. Miles still needs a background-location video filmed on a real phone.</div>
+  <div class="call">Invoice Android 1.0 is live on Google Play (UK only). Gas Android 1.1.2 (11) is live on Google Play (UK only); Play Internal 1.1.3 (12) is testing the next update, and is on the Pixel. CIS Android 1.1 (7) is completed on Play Internal testing, with changes in Play review. Miles Android Internal 1.0 (13) is completed; the Pixel was last confirmed on 1.0 (12). Miles also has a Production 1.0 draft that has not been sent. A public listing for CIS and Miles still waits for Pete. Miles still needs a background-location video filmed on a real phone.</div>
 
   <div class="stats">
     <div class="stat"><b data-pct-app="Invoice">—</b><span>Invoice checklist done</span></div>
     <div class="stat"><b data-pct-app="CIS">—</b><span>CIS checklist done</span></div>
     <div class="stat"><b>1.0</b><span>Invoice Android live on Play</span></div>
-    <div class="stat"><b>1</b><span>Public store releases</span></div>
+    <div class="stat"><b>2</b><span>Public store releases</span></div>
   </div>
 
   <section id="progress">
@@ -303,7 +303,7 @@
 
   <section id="stages">
     <h2>The same four steps</h2>
-    <p class="note">Yellow means that step is done. A dashed yellow bar means the store page is prepared and not sent, except Invoice Android, where the store-page step is filled because the 9 Nov production review was sent. Grey means not started. Public is filled for Invoice Android only; the rest are still grey.</p>
+    <p class="note">Yellow means that step is done. A dashed yellow bar means the store page is prepared and not sent, except Invoice Android and Gas Android, where the store-page step is filled because those apps are live. Grey means not started. Public is filled for Invoice Android and Gas Android; the rest are still grey.</p>
     <div class="chart">
       <svg viewBox="0 0 980 420" role="img" aria-label="Stage chart for each app and platform">
         <g font-family="Oswald, Impact, sans-serif" font-size="15" fill="#a39e92">
@@ -319,7 +319,7 @@
   <section class="split">
     <div>
       <h2 id="gap">On the phone, not the same build</h2>
-      <p class="note">Miles is one gap: Android shows streets, the iPhone still shows the on-device outline. Gas is the other: Play Internal has Android 1.1 (9), but both test phones are on a debug build.</p>
+      <p class="note">Miles is one gap: Android shows streets, the iPhone still shows the on-device outline. Gas iPhone was last confirmed on a 7 Nov debug build; TestFlight has 1.1 (7).</p>
       <div class="chart" style="padding:18px">
         <svg viewBox="0 0 640 220" role="img" aria-label="Miles map and Gas build gaps between the phones and the latest test tracks">
           <rect x="0" y="20" width="280" height="16" fill="#f2c500"/>
@@ -327,14 +327,14 @@
           <text x="0" y="14" fill="#fff" font-family="Oswald, Impact, sans-serif" font-size="16">ANDROID · STREET MAP · 1.0 (12)</text>
           <text x="0" y="64" fill="#fff" font-family="Oswald, Impact, sans-serif" font-size="16">IPHONE · OUTLINE ONLY · 1.0 (9)</text>
           <text x="0" y="120" fill="#a39e92" font-family="Avenir Next, Helvetica, sans-serif" font-size="15">The street-map work for iPhone is drafted. It is not on TestFlight.</text>
-          <text x="0" y="148" fill="#a39e92" font-family="Avenir Next, Helvetica, sans-serif" font-size="15">Gas Android 1.1 (9) is on Play Internal. The phones still run a 7 Nov debug build.</text>
+          <text x="0" y="148" fill="#a39e92" font-family="Avenir Next, Helvetica, sans-serif" font-size="15">Gas Android 1.1.2 (11) is live. Play Internal 1.1.3 (12) is on the Pixel.</text>
         </svg>
       </div>
     </div>
     <div class="ahead">
       <h2 id="ahead">Written, not on the phone</h2>
       <ul>
-        <li><strong>Gas.</strong> Play Internal has Android 1.1 (9). The test phones are on a debug build. Team sharing for a later public release is not in that Internal build.</li>
+        <li><strong>Gas.</strong> Play Internal has Android 1.1.3 (12), and it is on the Pixel. The live public build is 1.1.2 (11).</li>
         <li><strong>Miles, iPhone.</strong> Place names on trips already filed, and the shared street map, are drafted only.</li>
         <li><strong>Books.</strong> The friend download on the website is still 1.3.1. The 1.3.13 update is staged and not published. The Mac app is 1.3.15.</li>
         <li><strong>Website.</strong> The Android privacy section and the canonical-URL fix went live on 9 Nov.</li>
@@ -355,8 +355,8 @@
       <div class="step">
         <div><span class="tag">Play</span><div class="n">01</div></div>
         <div>
-          <h3>Watch Invoice Android after launch</h3>
-          <p>Approved and live on 12 Nov, UK only. Next is watching early feedback and store messages.</p>
+          <h3>Watch Invoice and Gas Android after launch</h3>
+          <p>Invoice Android 1.0 and Gas Android 1.1.2 (11) are live on Google Play, UK only. Next is watching early feedback and store messages.</p>
         </div>
       </div>
       <div class="step">
@@ -370,14 +370,14 @@
         <div><span class="tag alert">Pete</span><div class="n">03</div></div>
         <div>
           <h3>Say when to submit the other apps</h3>
-          <p>After Invoice, the order is CIS, then Gas, then Miles. UK only. Do not send the next app while the last one is in review.</p>
+          <p>After Invoice and Gas, the order is CIS, then Miles. UK only. Do not send the next app while the last one is in review.</p>
         </div>
       </div>
       <div class="step">
         <div><span class="tag wait">Phones</span><div class="n">04</div></div>
         <div>
           <h3>Line up Gas and Miles on the test phones</h3>
-          <p>Gas phones still run a debug build, not Play Internal 1.1 (9). Miles Android Internal is 1.0 (13); the Pixel was last confirmed on 1.0 (12). The Miles iPhone build still lacks the street map that is already on Android.</p>
+          <p>Gas Android Play Internal 1.1.3 (12) is on the Pixel. Gas iPhone was last confirmed on a 7 Nov debug build; TestFlight has 1.1 (7). Miles Android Internal is 1.0 (13); the Pixel was last confirmed on 1.0 (12). The Miles iPhone build still lacks the street map that is already on Android.</p>
         </div>
       </div>
       <div class="step">
@@ -394,10 +394,10 @@
     <h2>Blockers</h2>
     <p class="note">What is stuck, and who it waits on.</p>
     <div class="path">
-      <div class="step"><div><span class="tag">Play</span></div><div><h3>Invoice Android is live</h3><p>Invoice is public on Google Play in the UK. The other apps wait their turn.</p></div></div>
+      <div class="step"><div><span class="tag">Play</span></div><div><h3>Invoice and Gas Android are live</h3><p>Invoice and Gas are public on Google Play in the UK. CIS and Miles wait their turn.</p></div></div>
       <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>Miles background-location video</h3><p>It has to be filmed on a real phone before a Play submit.</p></div></div>
-      <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>OK to submit CIS, Gas and Miles</h3><p>Listings are written. Nothing goes to review until Pete says so in chat.</p></div></div>
-      <div class="step"><div><span class="tag wait">Phones</span></div><div><h3>Gas test phones are on a debug build</h3><p>Play Internal 1.1 (9) is ready for testers. The phones were last confirmed on a 7 Nov debug build.</p></div></div>
+      <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>OK to submit CIS and Miles</h3><p>Listings are written. CIS Android already has changes in Play review. Nothing else goes to review until Pete says so in chat.</p></div></div>
+      <div class="step"><div><span class="tag wait">Phones</span></div><div><h3>Gas iPhone is behind the TestFlight build</h3><p>TestFlight has 1.1 (7). The iPhone was last confirmed on a 7 Nov debug build. The Pixel is on Play Internal 1.1.3 (12).</p></div></div>
       <div class="step"><div><span class="tag wait">Phones</span></div><div><h3>Miles iPhone map is behind Android</h3><p>The street map is drafted and is not on TestFlight. The phone still shows the outline.</p></div></div>
       <div class="step"><div><span class="tag alert">Pete</span></div><div><h3>Books friend download</h3><p>1.3.13 stays staged until Pete says to publish it.</p></div></div>
     </div>
@@ -417,7 +417,7 @@
   </section>
 </main>
 <footer>
-  FOXON Software · Tools That Graft · Updated 16 Nov 2026, Europe/London. Gas iPhone 1.1 (7) is on TestFlight (internal testers only). CIS Android changes are in Play review. Invoice Android 1.0 is live on Google Play, UK only.
+  FOXON Software · Tools That Graft · Updated 16 Nov 2026, Europe/London. Gas iPhone 1.1 (7) is on TestFlight (internal testers only). CIS Android changes are in Play review. Invoice Android 1.0 and Gas Android 1.1.2 (11) are live on Google Play, UK only.
 </footer>
 <script>
 const tick = `<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
@@ -489,7 +489,7 @@ const apps = [
     draw: `<svg viewBox="0 0 120 120"><path d="M60 18c8 16 22 28 22 46a22 22 0 0 1-44 0c0-18 14-30 22-46z" fill="none" stroke="#f2c500" stroke-width="4"/><path d="M60 58c4 6 10 10 10 16a10 10 0 0 1-20 0c0-6 6-10 10-16z" fill="#f2c500"/></svg>`,
     tracks: [
       { plat: "iPhone", ver: "TestFlight 1.1 (7)", pill: "Internal test", cls: "", steps: ["on","on","mid","off"], labels: ["Built","On the phone","Prepared","Public"] },
-      { plat: "Android", ver: "Play Internal 1.1 (9)", pill: "Internal, not on the Pixel", cls: "wait", steps: ["on","on","off","off"], labels: ["Built","On Internal","Not sent","Public"] }
+      { plat: "Android", ver: "Play 1.1.2 live", pill: "Live", cls: "", steps: ["on","on","on","on"], labels: ["Built","On the Pixel","In review","Public"] }
     ],
     lanes: [
       { who: "iPhone", points: [
@@ -503,11 +503,13 @@ const apps = [
         { v: "code 3", when: "27 Oct · Play internal", state: "past" },
         { v: "1.1 (4)", when: "28 Oct · Play internal", state: "past" },
         { v: "1.1 (8)", when: "4 Nov · was the Play build", state: "past" },
-        { v: "Debug 1.1 (8)", when: "7 Nov · on the Pixel", state: "now" },
-        { v: "1.1 (9)", when: "9 Nov · Play Internal, not on the Pixel", state: "wait" }
+        { v: "Debug 1.1 (8)", when: "7 Nov · was on the Pixel", state: "past" },
+        { v: "1.1 (9)", when: "9 Nov · was Play Internal", state: "past" },
+        { v: "1.1.2 (11)", when: "Live on Play, UK only", state: "now" },
+        { v: "1.1.3 (12)", when: "16 Nov · Play Internal, on the Pixel", state: "now" }
       ]}
     ],
-    call: "Records and certificates. Not a Gas Safe approval, and this page does not claim one. Android 1.1.1 (10) was sent to Play Production on 12 Nov, UK only; live status is not yet confirmed. Android 1.1.3 (12) is now on Play Internal testing (16 Nov). The test phones are still on a 7 Nov debug build. Team sharing is switched off in this release."
+    call: "Records and certificates. Not a Gas Safe approval, and this page does not claim one. Android 1.1.2 (11) is live on Google Play, UK only. Android 1.1.3 (12) is on Play Internal testing and on the Pixel (16 Nov)."
   },
   {
     name: "Books", job: "The company ledger.",
@@ -534,13 +536,13 @@ const apps = [
 
 const stageRows = [
   ["Invoice · iPhone", ["full","full","half","none"]],
-  ["Invoice · Android", ["full","full","full","none"]],
+  ["Invoice · Android", ["full","full","full","full"]],
   ["CIS · iPhone", ["full","full","half","none"]],
   ["CIS · Android", ["full","full","none","none"]],
   ["Miles · iPhone", ["full","full","half","none"]],
   ["Miles · Android", ["full","full","none","none"]],
   ["Gas · iPhone", ["full","full","half","none"]],
-  ["Gas · Android", ["full","full","none","none"]],
+  ["Gas · Android", ["full","full","full","full"]],
   ["Books · Mac", ["full","full","half","none"]],
   ["Books · Windows", ["none","none","none","none"]]
 ];
