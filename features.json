@@ -1,5 +1,5 @@
 {
-  "updated": "12 Nov 2026",
+  "updated": "16 Nov 2026",
   "platforms": [
     {
       "id": "invoice-ios",
@@ -186,7 +186,7 @@
           },
           "cis-android": {
             "state": "part",
-            "note": "Drafted. Not submitted on Play."
+            "note": "Sent to Play review on 16 Nov. Changes in review."
           }
         },
         {
